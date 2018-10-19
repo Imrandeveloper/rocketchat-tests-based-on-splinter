@@ -33,6 +33,8 @@ PUGS_LIMIT=${PUGS_LIMIT:=5}
 
 PYTHON=${PYTHON:="python3"}
 
+RC_VERSION=${RC_VERSION:="0.69"}
+
 set +x
 
 if [ -z "${PYTHON}" ]; then
@@ -78,7 +80,7 @@ for i in "${RUN[@]}"; do
     case "${i}" in
         # General tests for Rocket.Chat
         rc)
-            ${PYTHON} rc_tests.py --host="${HOST}" --username="${USERNAME}" --password="${PASSWORD}"
+            ${PYTHON} rc_tests.py --host="${HOST}" --username="${USERNAME}" --password="${PASSWORD}" --rc_version="${RC_VERSION}"
             ;;
         # Tests for different scripts
         happy_birthder_script)

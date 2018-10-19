@@ -81,6 +81,11 @@ All the parameters mentioned below are **mandatory**, so don't forget to provide
     <td>python3</td>
   </tr>
   <tr>
+    <td>RC_VERSION</td>
+    <td>Rocket.Chat version for testing</td>
+    <td>0.69</td>
+  </tr>
+  <tr>
     <td align="center" colspan="3"><b>hubot-pugme</b></td>
   </tr>
   <tr>
