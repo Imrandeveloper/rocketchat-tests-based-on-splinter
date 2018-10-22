@@ -19,8 +19,8 @@ from base import RocketChatTestCase
 
 
 class VoteOrDieScriptTestCase(RocketChatTestCase):
-    def __init__(self, addr, username, password, **kwargs):
-        RocketChatTestCase.__init__(self, addr, username, password, **kwargs)
+    def __init__(self, addr, username, password, rc_version, **kwargs):
+        RocketChatTestCase.__init__(self, addr, username, password, rc_version, **kwargs)
 
         self.schedule_pre_test_case('choose_general_channel')
 
@@ -51,6 +51,8 @@ def main():
                       help='allows specifying admin username')
     parser.add_option('-p', '--password', dest='password',
                       help='allows specifying admin password')
+    parser.add_option('-v', '--rc_version', dest='rc_version',
+                      help='allows specifying version of Rocket.Chat')
     options, args = parser.parse_args()
 
     if not options.host:
@@ -62,8 +64,12 @@ def main():
     if not options.password:
         parser.error('Password is not specified')
 
+    if not options.rc_version:
+        parser.error('Rocket.Chat version is not specified')
+
     test_cases = VoteOrDieScriptTestCase(options.host, options.username,
-                                         options.password, create_test_user=False)
+                                         options.password, options.rc_version,
+                                         create_test_user=False)
     test_cases.run()
 
 

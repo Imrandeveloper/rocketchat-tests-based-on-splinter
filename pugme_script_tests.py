@@ -20,8 +20,8 @@ from base import RocketChatTestCase
 
 
 class PugmeScriptTestCase(RocketChatTestCase):
-    def __init__(self, addr, username, password, pugs_limit, **kwargs):
-        RocketChatTestCase.__init__(self, addr, username, password, **kwargs)
+    def __init__(self, addr, username, password, rc_version, pugs_limit, **kwargs):
+        RocketChatTestCase.__init__(self, addr, username, password, rc_version, **kwargs)
 
         self.schedule_pre_test_case('choose_general_channel')
 
@@ -56,6 +56,8 @@ def main():
                       help='allows specifying admin username')
     parser.add_option('-p', '--password', dest='password',
                       help='allows specifying admin password')
+    parser.add_option('-v', '--rc_version', dest='rc_version',
+                      help='allows specifying version of Rocket.Chat')
     parser.add_option('-l', '--pugs_limit', dest='pugs_limit',
                       help='allows specifying limit for pugs')
     options, args = parser.parse_args()
@@ -72,8 +74,12 @@ def main():
     if not options.pugs_limit:
         parser.error('Pugs limit is not specified')
 
+    if not options.rc_version:
+        parser.error('Rocket.Chat version is not specified')
+
     test_cases = PugmeScriptTestCase(options.host, options.username, options.password,
-                                     pugs_limit=options.pugs_limit, create_test_user=False)
+                                     options.rc_version, pugs_limit=options.pugs_limit,
+                                     create_test_user=False)
     test_cases.run()
 
 

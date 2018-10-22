@@ -19,35 +19,7 @@ from base import RocketChatTestCase
 
 
 class GeneralTestCase(RocketChatTestCase):
-    def __init__(self, addr, username, password, rc_version, **kwargs):
-        RocketChatTestCase.__init__(self, addr, username, password, **kwargs)
-
-        self._rc_version = rc_version
-
-    def test_check_rc_version(self):
-        options_btn = self.browser.find_by_css(
-            '.sidebar__toolbar-button.rc-tooltip.rc-tooltip--down.js-button'
-        )
-        assert len(options_btn)
-        options_btn.last.click()
-
-        administration_btn = self.browser.find_by_css('.rc-popover__item-text')
-        assert administration_btn
-        administration_btn.click()
-
-        info_btn = self.browser.driver.find_elements_by_css_selector(
-            'a.sidebar-item__link[aria-label="Info"]')
-
-        assert len(info_btn)
-
-        self.browser.driver.execute_script("arguments[0].click();",
-                                           info_btn[0])
-
-        info_table = self.browser.find_by_css(".admin-table-row")
-        assert len(info_table)
-
-        version = '.'.join(info_table.first.text.split()[1].split('.')[0:2])
-        assert version == self._rc_version
+    pass
 
 
 def main():

@@ -84,13 +84,13 @@ for i in "${RUN[@]}"; do
             ;;
         # Tests for different scripts
         happy_birthder_script)
-            ${PYTHON} happy_birthder_script_tests.py --host="${HOST}" --username="${USERNAME}" --password="${PASSWORD}"
+            ${PYTHON} happy_birthder_script_tests.py --host="${HOST}" --username="${USERNAME}" --password="${PASSWORD}" --rc_version="${RC_VERSION}"
             ;;
         pugme_script)
-            ${PYTHON} pugme_script_tests.py --host="${HOST}" --username="${USERNAME}" --password="${PASSWORD}" --pugs_limit="${PUGS_LIMIT}"
+            ${PYTHON} pugme_script_tests.py --host="${HOST}" --username="${USERNAME}" --password="${PASSWORD}" --rc_version="${RC_VERSION}" --pugs_limit="${PUGS_LIMIT}"
             ;;
         vote_or_die_script)
-            ${PYTHON} vote_or_die_script_tests.py --host="${HOST}" --username="${USERNAME}" --password="${PASSWORD}"
+            ${PYTHON} vote_or_die_script_tests.py --host="${HOST}" --username="${USERNAME}" --password="${PASSWORD}" --rc_version="${RC_VERSION}"
             ;;
         *)
             ;;
